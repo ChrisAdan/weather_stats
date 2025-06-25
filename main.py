@@ -12,15 +12,28 @@ DOC_DIR = CWD / 'doc'
 MONITOR_FILE = DOC_DIR / 'ingestion_summary.json'  
 
 def validate_schema(df: pd.DataFrame) -> bool:
+    """
+    Validate that the input DataFrame contains all required columns.
+
+    Parameters:
+        df (pd.DataFrame): The DataFrame to validate.
+
+    Returns:
+        bool: True if the DataFrame contains all required columns, False otherwise.
+    """
     return set(COLUMNS).issubset(df.columns)
 
-def get_encoding(file) -> str:
-    content = file.read(10000)
-    encoding = chardet.detect(content)['encoding']
-    file.seek(0)
-    return encoding
-
 def load_input_data() -> pd.DataFrame:
+    """
+    Recursively load and validate CSV files from the 'data/' directory.
+
+    Only rows from valid CSVs (those containing all required columns) are included.
+    Also removes any MacOS metadata files beginning with '._'.
+    An ingestion summary is written to 'doc/ingestion_summary.json'.
+
+    Returns:
+        pd.DataFrame: A concatenated DataFrame containing all valid records.
+    """
     valid_files = []
     total_files = 0
     invalid_files = 0
