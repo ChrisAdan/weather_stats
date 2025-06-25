@@ -1,8 +1,6 @@
 import pandas as pd
-import io
 import json
 from pathlib import Path
-import chardet
 
 COLUMNS = ['STATION', 'DATE', 'NAME', 'TEMP']
 
@@ -69,10 +67,6 @@ def load_input_data() -> pd.DataFrame:
     print(f'Processed {total_files} files. {invalid_files} invalid')
     print(f'Wrote ingestion summary to {MONITOR_FILE}')
     return pd.concat(valid_files, ignore_index=True)
-
-
-# make sure to convert F to C
-
 
 if __name__ == '__main__':
     full_input = load_input_data()
