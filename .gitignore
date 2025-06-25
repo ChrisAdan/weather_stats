@@ -1,3 +1,6 @@
 data/*.zip
 data/*.csv
 data/*.tar.gz
+__pycache__/
+.pytest_cache/
+._*
