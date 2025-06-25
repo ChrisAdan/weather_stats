@@ -12,7 +12,7 @@ Strategy will be to use the `tarfile` library in `main.py` to decompress the inp
 
 The raw data was read into a Jupyter Notebook. A subset of relevant columns and date ranges was selected and the rest was dropped to save memory. After checking for sparsity in the raw data (particularly on station names), questions are answered regarding station temperature patterns and trends.
 
-Thanks for reading!
+Thanks for reading!  
 Chris Adan  
 [Find me on LinkedIn](https://www.linkedin.com/in/chrisadan/)  
 [Read on Medium](https://upandtothewrite.medium.com/)
