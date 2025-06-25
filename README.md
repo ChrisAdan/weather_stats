@@ -7,6 +7,6 @@ Given an input containing a large number (~50k) CSV files, the objective is to i
 The README will be updated in stages as the project is progressed.
 
 Thanks for reading!
-Chris Adan
-[Find me on LinkedIn](https://www.linkedin.com/in/chrisadan/)
+Chris Adan  
+[Find me on LinkedIn](https://www.linkedin.com/in/chrisadan/)  
 [Read on Medium](https://upandtothewrite.medium.com/)
