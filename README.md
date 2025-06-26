@@ -14,6 +14,18 @@ Pytest was used to validate the input files for appropriate schemas.
 
 The raw data was read into a Jupyter Notebook. A subset of relevant columns and date ranges were selected and the rest dropped to save memory. After checking for sparsity in the raw data (particularly on station names), questions are answered regarding station temperature patterns and trends.
 
+## Answer 1: Hottest June Days
+
+![Top 10 Stations with Most June Days >30C](./doc/hottest_june_days.png)
+
+## Answer 2: Avg. June Temp Comparison
+
+![Number of Stations with Higher Average June Temperature, 2021 -> 2024](./doc/avg_june_temp_comparison.png)
+
+## Answer 3: Always Warm Stations
+
+![Stations with No June Days <20C (2021-2024)](./doc/always_warm_stations.png)
+
 ## Commentary
 
 Great practice task. My first approach was to unpack the .tar.gz input directory programmatically so I could process the ~50K CSVs without decompressing myself. Decided that was too time intensive, so opted to unzip via Linux in Bash and refactor the script to cycle through input CSVs, validate the schemas, and export a unified dataframe to CSV for analysis in the Jupyter layer. The benefit of that change to approach was time saved, but introducing manual elements to a process cuts back on scalability.
