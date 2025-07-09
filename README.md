@@ -1,42 +1,37 @@
 # Analyzing Sample Weather Statistics
 
-This repo organizes code for a classic data transformation and analytics task.
+This repository demonstrates a classic end-to-end data transformation and analytics workflow.  
 
-Given an input containing a large number (~50k) CSV files, the objective is to ingest, validate, standardize, and draw insights around temperature and other meteorological recordings from ~12K weather stations.
+The goal was to process a large collection (~50,000) of raw CSV files containing temperature and other meteorological readings from approximately 12,000 weather stations. The process involved ingesting, validating, standardizing, and analyzing the data to uncover meaningful insights.
 
-## Step 1: Ingest the inbound data
+## Step 1: Data Ingestion
 
-An initial strategy was to use the `tarfile` library in `main.py` to decompress the input directory. That proved time intensive, so instead it was extracted via Bash. Each file in the directory was looped and checked for conformity to the required column names to complete the exercise. Suitable files were appended and concatenated into a single output dataframe. Some brief sanitization steps were executed to drop missing or incomplete records. The output was be written to a CSV on disk and read into a Jupyter Notebook for analysis.
+Initially, I used Python’s `tarfile` library in `main.py` to decompress the input archive, but this approach was too time-intensive. Instead, I extracted the files using Bash, then looped through each file to check for the required schema. Valid files were appended and combined into a single clean dataset. Basic data cleaning removed missing or incomplete records. The resulting dataset was saved to disk as a CSV and loaded into a Jupyter Notebook for further exploration.  
 
-Pytest was used to validate the input files for appropriate schemas.
+I used `Pytest` to ensure the input files matched the expected schemas.
 
-## Step 2: Clean and analyze
+## Step 2: Cleaning and Analysis
 
 The raw data was read into a Jupyter Notebook. A subset of relevant columns and date ranges were selected and the rest dropped to save memory. After checking for sparsity in the raw data (particularly on station names), questions are answered regarding station temperature patterns and trends.
 
-## Answer 1: Hottest June Days
+## Key Insights
 
+1. Top stations with the highest number of June days over 30°C.
 ![Top 10 Stations with Most June Days >30C](./doc/hottest_june_days.png)
-
-## Answer 2: Avg. June Temp Comparison
-
+3. Comparison of average June temperatures between 2021 and 2024.
 ![Number of Stations with Higher Average June Temperature, 2021 -> 2024](./doc/avg_june_temp_comparison.png)
-
-## Answer 3: Always Warm Stations
-
+5. Stations consistently recording warm temperatures with no June days below 20°C.
 ![Stations with No June Days <20C (2021-2024)](./doc/always_warm_stations.png)
 
-## Commentary
+## Project Reflection
 
-Great practice task. My first approach was to unpack the .tar.gz input directory programmatically so I could process the ~50K CSVs without decompressing myself. Decided that was too time intensive, so opted to unzip via Linux in Bash and refactor the script to cycle through input CSVs, validate the schemas, and export a unified dataframe to CSV for analysis in the Jupyter layer. The benefit of that change to approach was time saved, but introducing manual elements to a process cuts back on scalability.
+This was an excellent exercise in handling large-scale file ingestion and data validation. While my initial plan was to fully automate decompression, switching to Bash extraction significantly reduced runtime, though it introduced a manual step that would need revisiting for true scalability.  
 
-If there were 100 years of data, depending on where those files are actually stored, I would consider more programmatic means of unpacking again, possibly parallelizing to reduce computation time, and minimizing actual memory on disk usage wherever possible.
+For larger datasets or longer time spans, I would explore parallelized unpacking and processing, or move to stream processing to reduce disk and memory overhead. I would also swap out the final CSV for a local DuckDB database to improve query speed and memory efficiency.  
 
-I would also use a local DuckDB instead of a CSV for improved interface times and lighter RAM footprint.
-
-Another note is that analysis in a Jupyter Notebook is great for ad hoc information, but for broader use cases such as dashboarding or automated reporting, a different approach to data modeling and a plan for storage would be important.
+Finally, while the Jupyter Notebook worked well for this ad hoc analysis, building repeatable dashboards or automated reports would require a more robust data modeling strategy and an appropriate storage layer.  
 
 Thanks for reading!  
-Chris Adan  
+**Chris Adan**  
 [Find me on LinkedIn](https://www.linkedin.com/in/chrisadan/)  
 [Read on Medium](https://upandtothewrite.medium.com/)
