@@ -18,11 +18,11 @@ The raw data was read into a Jupyter Notebook. A subset of relevant columns and 
 
 1. Top stations with the highest number of June days over 30°C.
   
-![Top 10 Stations with Most June Days >30C](./doc/hottest_june_days.png)
-3. Comparison of average June temperatures between 2021 and 2024.
-![Number of Stations with Higher Average June Temperature, 2021 -> 2024](./doc/avg_june_temp_comparison.png)
-5. Stations consistently recording warm temperatures with no June days below 20°C.
-![Stations with No June Days <20C (2021-2024)](./doc/always_warm_stations.png)
+![Top 10 Stations with Most June Days >30C](./doc/hottest_june_days.png)  
+3. Comparison of average June temperatures between 2021 and 2024.  
+![Number of Stations with Higher Average June Temperature, 2021 -> 2024](./doc/avg_june_temp_comparison.png)  
+5. Stations consistently recording warm temperatures with no June days below 20°C.  
+![Stations with No June Days <20C (2021-2024)](./doc/always_warm_stations.png)  
 
 ## Project Reflection
 
